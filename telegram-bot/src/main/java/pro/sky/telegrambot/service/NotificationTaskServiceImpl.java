@@ -5,6 +5,7 @@ import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 import pro.sky.telegrambot.NotificationTask;
 import pro.sky.telegrambot.NotificationTaskRepository;
 
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Service
 public class NotificationTaskServiceImpl implements NotificationTaskService {
 
     private final NotificationTaskRepository repository;

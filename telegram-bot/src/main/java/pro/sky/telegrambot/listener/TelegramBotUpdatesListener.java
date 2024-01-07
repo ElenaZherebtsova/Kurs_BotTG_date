@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
-@RequieredArgsConstructor
+
 public class TelegramBotUpdatesListener implements UpdatesListener {
 
     private final NotificationTaskService notificationTaskService;
