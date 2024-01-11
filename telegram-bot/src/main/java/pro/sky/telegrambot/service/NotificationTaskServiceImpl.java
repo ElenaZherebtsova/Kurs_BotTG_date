@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.logging.Logger;
+import org.slf4j.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +23,7 @@ public class NotificationTaskServiceImpl implements NotificationTaskService {
 
     private final NotificationTaskRepository repository;
     private final TelegramBot telegramBot;
-    private final Logger logger = (Logger) LoggerFactory.getLogger(NotificationTaskServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(NotificationTaskServiceImpl.class);
     private static final Pattern MESSAGE_PATTERN =
             Pattern.compile("([0-9\\.:\\s]){16}(\\s)(.+)");
     private static final DateTimeFormatter DATE_TIME_FORMATTER =
@@ -90,7 +90,7 @@ public class NotificationTaskServiceImpl implements NotificationTaskService {
                     DATE_TIME_FORMATTER);
 
             if (!alarmDate.isAfter(LocalDateTime.now())) {
-                logger.warning("Некорректный формат даты.");
+                logger.warn("Некорректный формат даты.");
                 telegramBot.execute(new SendMessage(chatId,
                         "Напоминание должно быть позднее текущего момента."));
                 return;
